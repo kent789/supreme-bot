@@ -15,10 +15,14 @@ from selenium.common.exceptions import TimeoutException
 from selenium.common.exceptions import UnexpectedAlertPresentException
 from selenium.common.exceptions import WebDriverException
 
-# configurer webdriver
+# configure webdriver
 capa = DesiredCapabilities.CHROME
 capa["pageLoadStrategy"] = "none"
 driver = webdriver.Chrome(desired_capabilities=capa)
 driver1 = webdriver.Chrome(desired_capabilities=capa)
 wait = WebDriverWait(driver, 20)
 wait1 = WebDriverWait(driver1, 20)
+
+# web page to scrape
+base_url = "http://www.supremenewyork.com/shop"
+driver.get(base_url)
