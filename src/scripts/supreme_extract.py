@@ -1,28 +1,25 @@
-import csv
-import time
-import random
-import sys
-
-# selenium package
+import requests
+from bs4 import BeautifulSoup as bs
 from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.by import By
-from selenium.common.exceptions import NoSuchElementException
-from selenium.common.exceptions import TimeoutException
-from selenium.common.exceptions import UnexpectedAlertPresentException
-from selenium.common.exceptions import WebDriverException
 
-# configure webdriver
-capa = DesiredCapabilities.CHROME
-capa["pageLoadStrategy"] = "none"
-driver = webdriver.Chrome(desired_capabilities=capa)
-driver1 = webdriver.Chrome(desired_capabilities=capa)
-wait = WebDriverWait(driver, 20)
-wait1 = WebDriverWait(driver1, 20)
+baseUrl = "https://www.supremenewyork.com/shop/all/tops_sweaters"
 
-# web page to scrape
-base_url = "http://www.supremenewyork.com/shop"
-driver.get(base_url)
+
+
+# r = requests.get(baseUrl)
+# soup = bs(r.content, 'html.parser')
+
+
+def open_browser():
+    options = webdriver.ChromeOptions()
+    options.add_experimental_option("detach", True)
+    driver = webdriver.Chrome(options=options, executable_path='/users/kkubo/Downloads/chromedriver')
+    driver.get(baseUrl)
+
+    # driver.find_element_by_id('Glitter').click()
+    driver.find_element_by_link_text('Glitter S/S Top').click()
+
+open_browser()
+
+
+
