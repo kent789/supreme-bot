@@ -41,4 +41,24 @@ class supremeBot(object):
         self.b.find_option_by_text(self.info['size']).click()
         self.b.find_by_value('add to cart').click()
 
+    def checkoutFunc(self):
+        self.b.find_by_value('checkout now').click()
 
+        self.b.fill("order[billing_name]", self.info['namefield'])
+        self.b.fill("order[email]", self.info['emailfield'])
+        self.b.fill("order[tel]", self.info['phonefield'])
+
+        self.b.fill("order[billing_address]", self.info['addressfield'])
+        self.b.fill("order[billing_city]", self.info['city'])
+        self.b.fill("order[billing_zip]", self.info['zip'])
+        self.b.find_option_by_text(self.info['country']).click()
+
+        self.b.fill("credit_card[number]", self.info['number'])
+
+        self.b.find_option_by_text(self.info['month']).click()
+        self.b.find_option_by_text(self.info['year']).click()
+
+        self.b.fill("credit_card[verification_value]", self.info['ccv'])
+        self.b.find_by_css('.terms').click()
+
+        #self.b.find_by_value("process payment").click()
