@@ -8,7 +8,7 @@ This is a bot for Supreme using python for the script, [Beautiful_Soup](https://
 ## Usage
 In terminal, run the following commands
 ```
-cd src/scripts/main.py
+cd [repository folder]
 python3 main.py
 ```
 
@@ -33,3 +33,7 @@ pip install splinter
 - [ ] [Randomize](https://stackoverflow.com/questions/49565042/way-to-change-google-chrome-user-agent-in-selenium/49565254#49565254) user agent using Selenium 
 
 - [ ] [Automate](https://stackoverflow.com/questions/55264221/how-to-click-on-the-recaptcha-using-selenium-and-java/55265044#55265044) captcha fill using Selenium
+
+- [ ] Function for multiple products to be added to cart
+
+- [ ] Functionality to schedule running of the script

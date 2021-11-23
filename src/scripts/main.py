@@ -10,13 +10,14 @@ class SupremeBot(object):
         self.shop = 'shop/all/'
         self.checkout = 'checkout/'
         self.info = info
+        self.testing = True
 
     def initializeBrowser(self):
         driver = self.info["driver"]
         path = helpers.get_driver_path(driver)
         if driver == "chromedriver":
             executable_path = {"executable_path": path}
-            self.b = Browser('chrome', **executable_path)
+            self.browser = Browser('chrome', **executable_path)
 
     def findProduct(self):
         try:
@@ -42,53 +43,55 @@ class SupremeBot(object):
 
  
     def visitSite(self):
-        self.b.visit(
+        self.browser.visit(
             "{}{}".format(
                 self.base_url, 
                 self.final_link))
-        self.b.find_option_by_text(self.info['size']).click()
+        self.browser.find_option_by_text(self.info['size']).click()
         time.sleep(.2) # sleep for 20 milliseconds
-        self.b.find_by_value('add to cart').click()
+        self.browser.find_by_value('add to cart').click()
 
     def checkoutFunc(self):
         time.sleep(.2) # sleep for 20 milliseconds
-        self.b.find_by_value('checkout now').click()
+        self.browser.find_by_value('checkout now').click()
 
-        self.b.fill("order[billing_name]", self.info['namefield'])
-        self.b.fill("order[email]", self.info['emailfield'])
-        self.b.fill("order[tel]", self.info['phonefield'])
+        self.browser.fill("order[billing_name]", self.info['namefield'])
+        self.browser.fill("order[email]", self.info['emailfield'])
+        self.browser.fill("order[tel]", self.info['phonefield'])
 
-        self.b.fill("order[billing_address]", self.info['addressfield'])
-        self.b.fill("order[billing_city]", self.info['city'])
-        self.b.fill("order[billing_zip]", self.info['zip'])
-        self.b.find_option_by_text(self.info['country']).click()
+        self.browser.fill("order[billing_address]", self.info['addressfield'])
+        self.browser.fill("order[billing_city]", self.info['city'])
+        self.browser.fill("order[billing_zip]", self.info['zip'])
+        self.browser.find_option_by_text(self.info['country']).click()
 
-        self.b.fill("credit_card[number]", self.info['number'])
+        self.browser.fill("credit_card[number]", self.info['number'])
 
-        self.b.find_option_by_text(self.info['month']).click()
-        self.b.find_option_by_text(self.info['year']).click()
+        self.browser.find_option_by_text(self.info['month']).click()
+        self.browser.find_option_by_text(self.info['year']).click()
 
-        self.b.fill("credit_card[verification_value]", self.info['ccv'])
-        self.b.find_by_css('.terms').click()
+        self.browser.fill("credit_card[verification_value]", self.info['ccv'])
+        self.browser.find_by_css('.terms').click()
 
         time.sleep(.2) # sleep for 20 milliseconds
-        #self.b.find_by_value("process payment").click()
+        if not (self.testing):
+            self.b.find_by_value("process payment").click()
 
 if __name__ == "__main__":
     INFO = {
-        "driver": "chromedriver",
+        # Item info you want to purchase
         "product": "Glitter S/S Top",
         "color": "Black",
         "size": "Large",
         "category": "tops_sweaters",
+
+        "driver": "chromedriver",
         "namefield": "John Wick",
         "emailfield": "johnWick@gmail.com",
-        "phonefield": "(6264543464)",
-        "addressfield": "1234 Alison Road",
+        "phonefield": "1234567891",
+        "addressfield": "1234 BookeyMan Road",
         "city": "Mountain View",
         "zip": "94040",
         "country": "CA",
-        "card": "visa",
         "number": "1234123412341234",
         "month": "09",
         "year": "2023",
@@ -110,4 +113,4 @@ if __name__ == "__main__":
         
     BOT.initializeBrowser()
     BOT.visitSite()
-    #BOT.checkoutFunc()
+    BOT.checkoutFunc()
