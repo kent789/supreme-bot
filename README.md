@@ -32,4 +32,4 @@ pip install splinter
 # TODO:
 - [ ] [Randomize](https://stackoverflow.com/questions/49565042/way-to-change-google-chrome-user-agent-in-selenium/49565254#49565254) user agent using Selenium 
 
-- [ ] [Automate] (https://stackoverflow.com/questions/55264221/how-to-click-on-the-recaptcha-using-selenium-and-java/55265044#55265044) captcha fill using Selenium
+- [ ] [Automate](https://stackoverflow.com/questions/55264221/how-to-click-on-the-recaptcha-using-selenium-and-java/55265044#55265044) captcha fill using Selenium
