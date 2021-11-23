@@ -15,9 +15,8 @@ class SupremeBot(object):
     def initializeBrowser(self):
         driver = self.info["driver"]
         path = helpers.get_driver_path(driver)
-        if driver == "chromedriver":
-            executable_path = {"executable_path": path}
-            self.browser = Browser('chrome', **executable_path)
+        executable_path = {"executable_path": path}
+        self.browser = Browser('chrome', **executable_path)
 
     def findProduct(self):
         try:
@@ -106,7 +105,7 @@ if __name__ == "__main__":
 
     while not found_product and counter < max_iter:
         found_product = BOT.findProduct()
-        print(counter, "time try")
+        print(counter, "tries")
         counter += 1
     if not found_product:
         raise Exception("Couldn not find the product")

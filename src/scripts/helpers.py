@@ -1,7 +1,5 @@
-#!/usr/bin/env python3 
 import os
 import platform
-import glob
 
 def get_driver_path(driver):
     supported = ["macOS"]
