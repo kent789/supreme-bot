@@ -33,6 +33,12 @@ class supremeBot(object):
             return False
 
  
- 
+    def visitSite(self):
+        self.b.visit(
+            "{}{}".format(
+                self.base_url, 
+                self.final_link))
+        self.b.find_option_by_text(self.info['size']).click()
+        self.b.find_by_value('add to cart').click()
 
 
