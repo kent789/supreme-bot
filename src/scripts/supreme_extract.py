@@ -70,3 +70,37 @@ class supremeBot(object):
 
         #self.b.find_by_value("process payment").click()
 
+if __name__ == "__main__":
+    INFO = {
+        "driver": "chromedriver",
+        "product": "Glitter S/S Top",
+        "color": "Black",
+        "size": "Large",
+        "category": "tops_sweaters",
+        "namefield": "John Wick",
+        "emailfield": "johnWick@gmail.com",
+        "phonefield": "(6264543464)",
+        "addressfield": "1234 Alison Road",
+        "city": "Mountain View",
+        "zip": "94040",
+        "country": "CA",
+        "card": "visa",
+        "number": "1234123412341234",
+        "month": "09",
+        "year": "2023",
+        "ccv": "123"
+    }
+    BOT = supremeBot(**INFO)
+    # Flag to set to true if you want to reload the page continously close to drop.
+    found_product = False
+    max_iter = 2
+    counter = 1
+    while not found_product and counter < max_iter:
+        found_product = BOT.findProduct()
+        print("Tried ", counter, " times")
+        counter += 1
+    if not found_product:
+        raise Exception("Couldn't find product. Sry bruh")
+    BOT.initializeBrowser()
+    BOT.visitSite()
+    BOT.checkoutFunc()
