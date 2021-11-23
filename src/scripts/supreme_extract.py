@@ -10,6 +10,13 @@ class supremeBot(object):
         self.checkout = 'checkout/'
         self.info = info
 
+    def initializeBrowser(self):
+        driver = self.info["driver"]
+        path = helpers.get_driver_path(driver)
+        if driver == "chromedriver":
+            executable_path = {"executable_path": path}
+            self.b = Browser('chrome', **executable_path)
+
     def findProduct(self):
         try:
             productPage = requests.get(
@@ -62,3 +69,4 @@ class supremeBot(object):
         self.b.find_by_css('.terms').click()
 
         #self.b.find_by_value("process payment").click()
+
