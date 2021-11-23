@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup as bs
 from splinter import Browser
 import helpers
 
-class supremeBot(object):
+class SupremeBot(object):
     def __init__(self, **info):
         self.base_url = 'https://www.supremenewyork.com/'
         self.shop = 'shop/all/'
@@ -90,17 +90,20 @@ if __name__ == "__main__":
         "year": "2023",
         "ccv": "123"
     }
-    BOT = supremeBot(**INFO)
-    # Flag to set to true if you want to reload the page continously close to drop.
-    found_product = False
-    max_iter = 2
+
+    BOT = SupremeBot(**INFO)
+    
+    found_product = False 
+    max_iter = 5
     counter = 1
+
     while not found_product and counter < max_iter:
         found_product = BOT.findProduct()
-        print("Tried ", counter, " times")
+        print(counter, "time try")
         counter += 1
     if not found_product:
-        raise Exception("Couldn't find product. Sry bruh")
+        raise Exception("Couldn not find the product")
+        
     BOT.initializeBrowser()
     BOT.visitSite()
-    BOT.checkoutFunc()
+    #BOT.checkoutFunc()
