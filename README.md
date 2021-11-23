@@ -40,5 +40,5 @@ pip install splinter
 
 ## Demo
 <p align="center">
-  <img src="bin/SupremeBotExample.mov" alt="Demo" height="720"/>
+  <img src="bin/SupremeBotExample.gif" alt="Demo" height="720"/>
 </p>
