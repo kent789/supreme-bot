@@ -3,7 +3,7 @@
 </h1>
 
 ## Overview
-This is a bot for Supreme using python and Splinter library 
+This is a bot for Supreme using python for the script, [Beautiful_Soup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) to pull data from HTML, and [Splinter_Library](https://splinter.readthedocs.io/en/latest/) to execute on a web application
 
 ## Usage
 In terminal, run the following commands
