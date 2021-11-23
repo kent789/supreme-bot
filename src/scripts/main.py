@@ -10,7 +10,7 @@ class SupremeBot(object):
         self.shop = 'shop/all/'
         self.checkout = 'checkout/'
         self.info = info
-        self.testing = True
+        self.testing = False # Set True while testing
 
     def initializeBrowser(self):
         driver = self.info["driver"]
@@ -74,7 +74,7 @@ class SupremeBot(object):
 
         time.sleep(.2) # sleep for 20 milliseconds
         if not (self.testing):
-            self.b.find_by_value("process payment").click()
+            self.browser.find_by_value("process payment").click()
 
 if __name__ == "__main__":
     INFO = {

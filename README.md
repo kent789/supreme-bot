@@ -37,3 +37,8 @@ pip install splinter
 - [ ] Function for multiple products to be added to cart
 
 - [ ] Functionality to schedule running of the script
+
+## Demo
+<p align="center">
+  <img src="https://github.com/kent789/supreme_scraper/raw/master/bin/SupremeBotExample.mov" alt="Movie"/>
+</p>
