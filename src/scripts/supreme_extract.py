@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup as bs
 from splinter import Browser
 import helpers
+import time
 
 class SupremeBot(object):
     def __init__(self, **info):
@@ -46,9 +47,11 @@ class SupremeBot(object):
                 self.base_url, 
                 self.final_link))
         self.b.find_option_by_text(self.info['size']).click()
+        time.sleep(.2) # sleep for 20 milliseconds
         self.b.find_by_value('add to cart').click()
 
     def checkoutFunc(self):
+        time.sleep(.2) # sleep for 20 milliseconds
         self.b.find_by_value('checkout now').click()
 
         self.b.fill("order[billing_name]", self.info['namefield'])
@@ -68,6 +71,7 @@ class SupremeBot(object):
         self.b.fill("credit_card[verification_value]", self.info['ccv'])
         self.b.find_by_css('.terms').click()
 
+        time.sleep(.2) # sleep for 20 milliseconds
         #self.b.find_by_value("process payment").click()
 
 if __name__ == "__main__":
